@@ -194,6 +194,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 set -o vi
 
+eval "$(mise activite bash)"
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
