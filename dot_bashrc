@@ -92,6 +92,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias devpod='flatpak run sh.loft.devpod'
+
 # kubectl alias
 alias k='kubectl'
 alias kgp='kubectl get pods'
