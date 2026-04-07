@@ -1,0 +1,9 @@
+Host github-new
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_new
+                                              
+  Host github-old                         
+    HostName github.com
+    User git                                                                                                                                 
+    IdentityFile ~/.ssh/id_ed25519_old
