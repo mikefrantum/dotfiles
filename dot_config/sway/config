@@ -235,3 +235,12 @@ bindsym $mod+r mode "resize"
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
 exec flatpak run com.nextcloud.desktopclient.nextcloud --background --platform wayland
+
+default_floating_border pixel 1   
+smart_borders on
+gaps inner 0
+gaps outer 0
+default_border pixel 1
+
+for_window [app_id="google-chrome"] border none, gaps inner 0, gaps outer 0
+for_window [app_id="org.chromium.Chromium"] border none, gaps inner 0, gaps outer 0
