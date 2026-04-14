@@ -31,7 +31,7 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg, jxl-pixbuf-loader
-output * bg /usr/share/backgrounds/default.jxl fill
+output * bg /home/mike/Wallpaper/2dMountains.jpg fill
 #
 # Example configuration:
 #
@@ -146,7 +146,7 @@ output DP-1 pos 1920 0
 
 # Screenshots
 bindsym $mod+Shift+o exec grim ~/Nextcloud/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png
-bindsym $mod+o exec grim -g "$(slurp)" ~/Nextcloud/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png
+bindsym $mod+o exec grim -g "$(slurp)" ~/Nextcloud/ScreenShots/screenshot-$(date +%Y%m%d-%H%M%S).png
 # Screen recording
 bindsym $mod+m exec wf-recorder -f ~/Nextcloud/ScreenRecordings/recording-$(date +%Y%m%d-%H%M%S).mp4
 bindsym $mod+Shift+m exec pkill wf-recorder
