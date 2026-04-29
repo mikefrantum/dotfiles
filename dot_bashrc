@@ -152,6 +152,3 @@ export PATH="/home/mike/.rd/bin:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 
-# fnm
-export PATH="$HOME/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
