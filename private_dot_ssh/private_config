@@ -1,19 +1,20 @@
-# DevPod Start test-dev-container.devpod                                                                                                                  
-  Host test-dev-container.devpod                                                                                                                            
-    ForwardAgent yes                                                                                                                                        
-    LogLevel error                                                                                                                                          
-    StrictHostKeyChecking no                                                                                                                                
-    UserKnownHostsFile /dev/null                                                                                                                            
-    HostKeyAlgorithms rsa-sha2-256,rsa-sha2-512,ssh-rsa                                                                                                     
-    ProxyCommand "/usr/local/bin/devpod" ssh --stdio --context default --user vscode test-dev-container                                                     
-    User vscode                                                                                                                                             
-  # DevPod End test-dev-container.devpod                                                                                                                    
-  Host github-dev                                                                                                                                           
-      HostName github.com                                                                                                                                   
-      User git                                                                                                                                              
-      IdentityFile ~/.ssh/id_ed25519_dev                                                                                                                    
-                                                                                                                                                            
-    Host github                                                                                                                                             
-      HostName github.com                                                                                                                                   
-      User git                                                                                                                                              
-      IdentityFile ~/.ssh/id_ed25519
+# DevPod Start test-dev-container.devpod
+Host test-dev-container.devpod
+  ForwardAgent yes
+  LogLevel error
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  HostKeyAlgorithms rsa-sha2-256,rsa-sha2-512,ssh-rsa
+  ProxyCommand "/usr/local/bin/devpod" ssh --stdio --context default --user vscode test-dev-container
+  User vscode
+# DevPod End test-dev-container.devpod
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
+
+Host github-dev
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_dev
