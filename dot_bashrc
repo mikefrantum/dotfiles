@@ -141,7 +141,6 @@ export RECORDINGS_DIR="/home/mike/Files/MeetingNotes"
 set -o vi
 
 eval "$(starship init bash)"
-eval "$(mise activate bash)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
@@ -151,3 +150,4 @@ export PATH="/home/mike/.rd/bin:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 
+eval "$(mise activate bash)"
