@@ -64,7 +64,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias devpod='flatpak run sh.loft.devpod'
 alias k='kubectl'
 alias kgp='kubectl get pods'
 alias kc='kubectx'
@@ -142,7 +141,6 @@ export RECORDINGS_DIR="/home/mike/Files/MeetingNotes"
 set -o vi
 
 eval "$(starship init bash)"
-eval "$(mise activate bash)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
@@ -152,6 +150,4 @@ export PATH="/home/mike/.rd/bin:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 
-# fnm
-export PATH="$HOME/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
+eval "$(mise activate bash)"
