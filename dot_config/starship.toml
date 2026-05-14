@@ -38,18 +38,16 @@ symbol = "* "
 format = "on [$symbol$branch]($style) "
 style = "#8a9630 bold"
 
-[git_status]
-format = '([$all_status$ahead_behind]($style) )'
-style = "bold red"
-conflicted = "!"
-up_to_date = "="
-untracked = "?"
-stashed = "$"
-modified = "*"
-staged = "+"
-renamed = "»"
-deleted = "✘"
-ahead = "⇡"
-behind = "⇣"
-diverged = "⇕"
 
+[git_status]
+conflicted = '🏳'
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+up_to_date = '✓'
+untracked = '🤷'
+stashed = '📦'
+modified = '📝'
+staged = '[++\($count\)](green)'
+renamed = '👅'
+deleted = '🗑'
