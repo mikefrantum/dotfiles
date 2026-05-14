@@ -1,4 +1,5 @@
 [tools]
 
+lsd = "latest"
 chezmoi = "latest"
 starship = "latest"

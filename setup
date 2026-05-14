@@ -2,10 +2,20 @@
 
 set -euo pipefail
 
-sudo apt update && sudo apt install vim -y
+sudo apt update && sudo apt install vim alacritty lsd -y
 
 if ! command -v chezmoi >/dev/null; then
     sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/mikefrantum/dotfiles.git
+fi
+
+# Install nerd fonts
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts
+if [ ! -f "FiraCodeNerdFont-Regular.ttf" ]; then
+    wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/FiraCode.zip
+    unzip -q FiraCode.zip
+    rm FiraCode.zip
+    fc-cache -fv
 fi
 
 exit 0

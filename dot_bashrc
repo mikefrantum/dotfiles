@@ -61,17 +61,25 @@ fi
 
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='lsd -alFh --group-directories-first'
+alias la='lsd -Ah --group-directories-first'
+alias l='lsd -CFh --group-directories-first'
 alias k='kubectl'
 alias kgp='kubectl get pods'
 alias kc='kubectx'
 alias kn='kubens'
+alias cz='chezmoi'
+alias czcd='chezmoi cd'
+alias cze='chezmoi edit'
+alias cza='chezmoi apply'
+alias czs='chezmoi status'
+alias czd='chezmoi diff'
+alias czr='chezmoi re-add'
 alias dot='cd ~/dotfiles'
 alias lab='cd ~/repos/lab'
 alias repos='cd ~/repos'
 alias shop='cd ~/repos/shopify'
+alias homelab='cd ~/repos/homelab-cluster'
 
 source <(kubectl completion bash)
 complete -o default -F __start_kubectl k
