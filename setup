@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+sudo apt update && sudo apt install vim -y
+
 if ! command -v chezmoi >/dev/null; then
     sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/mikefrantum/dotfiles.git
 fi
