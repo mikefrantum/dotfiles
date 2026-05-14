@@ -1,4 +1,4 @@
 [tools]
-vim = "latest"
+
 chezmoi = "latest"
 starship = "latest"
