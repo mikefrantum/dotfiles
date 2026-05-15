@@ -155,3 +155,4 @@ export EDITOR=vim
 export VISUAL=vim
 
 eval "$(mise activate bash)"
+eval "$(direnv hook bash)"
