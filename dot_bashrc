@@ -158,6 +158,10 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
       eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 fi
 
+if [ "$DEVPOD" = "true" ]; then
+      export STARSHIP_CONFIG=~/.config/starship-devpod.toml
+fi
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/home/mike/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
