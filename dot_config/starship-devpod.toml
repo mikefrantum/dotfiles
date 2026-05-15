@@ -1,7 +1,7 @@
 # Starship Configuration for DevPod (no hostname)
 
 format = """
-$username→ $directory$git_branch$git_status\
+$username → $directory$git_branch$git_status\
 $line_break\
 $character """
 
@@ -20,8 +20,8 @@ format = "[$user](#8a9630 bold)"
 style_user = "#8a9630 bold"
 
 [directory]
-truncation_length = 3
-truncate_to_repo = true
+truncation_length = 10 
+truncate_to_repo = false 
 format = "[$path]($style) "
 style = "#4d8283 bold"
 read_only = " [RO]"
