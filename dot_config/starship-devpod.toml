@@ -1,0 +1,49 @@
+# Starship Configuration for DevPod (no hostname)
+
+format = """
+$username→ $directory$git_branch$git_status\
+$line_break\
+$character """
+
+# Right side prompt
+right_format = ""
+
+add_newline = true
+
+[character]
+success_symbol = "[>](#c2876c bold)"
+error_symbol = "[>](#c2876c bold)"
+
+[username]
+show_always = true
+format = "[$user](#8a9630 bold)"
+style_user = "#8a9630 bold"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+format = "[$path]($style) "
+style = "#4d8283 bold"
+read_only = " [RO]"
+read_only_style = "red"
+home_symbol = "~"
+
+[git_branch]
+symbol = "* "
+format = "on [$symbol$branch]($style) "
+style = "#8a9630 bold"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "bold red"
+conflicted = "!"
+up_to_date = "="
+untracked = "?"
+stashed = "$"
+modified = "*"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
