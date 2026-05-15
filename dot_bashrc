@@ -120,20 +120,12 @@ ytnotes() {
     fabric -y "$1" -p extract_wisdom -s | tee ~/Files/"Obsidian Vault"/Fabric/"$(date +%Y%m%d)-${channel}-${title}.md"
 }
 
-webnotes() {
-    domain=$(echo "$1" | sed -E 's|https?://([^/]+).*|\1|')
-    title=$(curl -sL -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36" "$1" | grep -oP '(?<=<title>)[^<]+' | head -1 | sed 's/[^a-zA-Z0-9 ]//g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1' | tr -d ' ')
-    fabric -u "$1" -p summarize -s | tee ~/Files/"Obsidian Vault"/Fabric/"$(date +%Y%m%d)-${domain}-${title}.md"
-}
-
-webnotes2() {
-    domain=$(echo "$1" | sed -E 's|https?://([^/]+).*|\1|')
-    title=$(echo "$2" | sed 's/[^a-zA-Z0-9 ]//g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1' | tr -d ' ')
-    fabric -u "$1" -p summarize -s | tee ~/Files/"Obsidian Vault"/Fabric/"$(date +%Y%m%d)-${domain}-${title}.md"
-}
-
-webnotes3() {
-    fabric -u "$1" -p summarize -s | tee ~/Files/"Obsidian Vault"/Fabric/"$(date +%Y%m%d)-$2.md"
+rumblnotes() {
+     info=$(yt-dlp --print "%(uploader)s|||%(title)s" "$1" 2>/dev/null)
+     channel=$(echo "$info" | cut -d'|' -f1 | sed 's/[^a-zA-Z0-9 ]//g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1' | tr-d ' ')
+     title=$(echo "$info" | cut -d'|' -f4 | sed 's/[^a-zA-Z0-9 ]//g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1' | tr -d ' ')
+     echo "Saving to: $(date +%Y%m%d)-${channel}-${title}.md"
+     fabric -u "$1" -p summarize -s | tee ~/Files/"Obsidian Vault"/Fabric/"$(date +%Y%m%d)-${channel}-${title}.md"
 }
 
 hushnote() {
