@@ -153,7 +153,10 @@ export RECORDINGS_DIR="/home/mike/Files/MeetingNotes"
 set -o vi
 
 eval "$(starship init bash)"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+fi
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/home/mike/.rd/bin:$PATH"
