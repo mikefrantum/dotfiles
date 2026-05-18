@@ -2,3 +2,4 @@
 chezmoi = "latest"
 starship = "latest"
 kubectl = "latest"
+kubectx = "latest"
