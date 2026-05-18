@@ -66,6 +66,7 @@ alias la='lsd -Ah --group-directories-first'
 alias l='lsd -CFh --group-directories-first'
 alias k='kubectl'
 alias kgp='kubectl get pods'
+alias kgpa='kubectl get pods -A'
 alias kc='kubectx'
 alias kn='kubens'
 alias cz='chezmoi'
@@ -79,7 +80,10 @@ alias dot='cd ~/dotfiles'
 alias lab='cd ~/repos/lab'
 alias repos='cd ~/repos'
 alias shop='cd ~/repos/shopify'
-alias homelab='cd ~/repos/homelab-cluster'
+alias hl='cd ~/repos/homelab-cluster'
+alias ga='git add .'
+alias gc='git commit -m'
+alias gp='git push'
 
 source <(kubectl completion bash)
 complete -o default -F __start_kubectl k
@@ -147,6 +151,10 @@ if [ "$DEVPOD" = "true" ]; then
       export STARSHIP_CONFIG=~/.config/starship-devpod.toml
 fi
 
+if command -v direnv &> /dev/null; then
+      eval "$(direnv hook bash)"
+fi
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/home/mike/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
@@ -155,6 +163,3 @@ export EDITOR=vim
 export VISUAL=vim
 
 eval "$(mise activate bash)"
-if command -v direnv &> /dev/null; then
-      eval "$(direnv hook bash)"
-fi
