@@ -155,6 +155,9 @@ if command -v direnv &> /dev/null; then
       eval "$(direnv hook bash)"
 fi
 
+export OLLAMA_HOST=http://ollama.taildb5a91.ts.net:11434
+alias ai='ollama run nous-hermes2'
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/home/mike/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
