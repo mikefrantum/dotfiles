@@ -120,6 +120,12 @@ exec --no-startup-id flatpak run com.nextcloud.desktopclient.nextcloud --backgro
 #
 # Workspaces:
 #
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
+
+bindsym $mod+Shift+bracketright move workspace to output right
+bindsym $mod+Shift+bracketleft move workspace to output left
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
