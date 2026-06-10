@@ -13,7 +13,6 @@
     "tray",
     "sway/window",
     "sway/mode",
-    "custom/cava-internal",
     "mpd#2",
     "mpd#3",
     "mpd#4",
@@ -39,5 +38,14 @@
     "include": ["~/.config/waybar/modules.json"],
 
   // Modules configuration
+
+    "custom/cava-internal": {
+    "exec": "~/.config/waybar/scripts/Cava.sh",
+    "return-type": "text",
+    "format": "{}",
+    "tooltip": false,
+    "restart-interval": 1,
+    "exec-if": "which cava"
+  }
 
 }
