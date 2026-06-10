@@ -68,6 +68,15 @@ workspace 8 output none
 workspace 9 output none
 workspace 10 output none
 
+# ==================== Waybar (Status Bar) ====================
+
+# Start Waybar only on the center monitor (Dell DP-2)
+bar {
+    swaybar_command waybar
+    output DP-2          # Only show on center monitor
+    position top
+    height 32
+}
 # All higher workspaces are free to appear on any monitor
 ### Idle configuration
 #
