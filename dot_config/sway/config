@@ -66,9 +66,6 @@ workspace 8 output none
 workspace 9 output none
 workspace 10 output none
 
-# ==================== Waybar ====================
-# Start only one Waybar on the Dell monitor
-exec waybar
 
 # ==================== Terminal ====================
 set $term alacritty
