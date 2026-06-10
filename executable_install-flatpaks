@@ -1,0 +1,6 @@
+#!/bin/bash
+  set -euo pipefail
+
+while read app origin; do
+    flatpak install --user -y $origin $app
+done < ~/.local/share/chezmoi/flatpaks.txt
