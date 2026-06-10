@@ -6,24 +6,29 @@ case $- in
       *) return;;
 esac
 
-# History settings
+# ==============================================================================
+# History
+# ==============================================================================
 HISTCONTROL=ignoreboth
-shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
+shopt -s histappend
 
-# Check window size after each command
+# ==============================================================================
+# Shell Options
+# ==============================================================================
 shopt -s checkwinsize
+set -o vi
 
-# Make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Set chroot variable if applicable
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# Color prompt
+# ==============================================================================
+# Prompt
+# ==============================================================================
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
@@ -43,14 +48,15 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# Set xterm title
 case "$TERM" in
     xterm*|rxvt*)
         PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
         ;;
 esac
 
-# Color support for ls and aliases
+# ==============================================================================
+# Colors
+# ==============================================================================
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -61,14 +67,34 @@ fi
 
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# ==============================================================================
+# PATH
+# ==============================================================================
+export PATH="$HOME/.rd/bin:$PATH"               # Rancher Desktop
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/share/appimages:$PATH"
+export PATH="$PATH:/home/mike/.lmstudio/bin"
+
+# ==============================================================================
+# Aliases — Files
+# ==============================================================================
 alias ll='lsd -alFh --group-directories-first'
 alias la='lsd -Ah --group-directories-first'
 alias l='lsd -CFh --group-directories-first'
+
+# ==============================================================================
+# Aliases — Kubernetes
+# ==============================================================================
 alias k='kubectl'
 alias kgp='kubectl get pods'
 alias kgpa='kubectl get pods -A'
 alias kc='kubectx'
 alias kn='kubens'
+
+# ==============================================================================
+# Aliases — Chezmoi
+# ==============================================================================
 alias cz='chezmoi'
 alias czcd='chezmoi cd'
 alias cze='chezmoi edit'
@@ -76,18 +102,39 @@ alias cza='chezmoi apply'
 alias czs='chezmoi status'
 alias czd='chezmoi diff'
 alias czr='chezmoi re-add'
+
+# ==============================================================================
+# Aliases — Navigation
+# ==============================================================================
 alias dot='cd ~/dotfiles'
 alias lab='cd ~/repos/lab'
 alias repos='cd ~/repos'
 alias shop='cd ~/repos/shopify'
 alias hl='cd ~/repos/homelab-cluster'
+
+# ==============================================================================
+# Aliases — Git
+# ==============================================================================
 alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
 
-source <(kubectl completion bash)
-complete -o default -F __start_kubectl k
+# ==============================================================================
+# Aliases — AI
+# ==============================================================================
+alias ai='ollama run nous-hermes2'
 
+# ==============================================================================
+# Kubectl Completion
+# ==============================================================================
+if command -v kubectl &> /dev/null; then
+    source <(kubectl completion bash)
+    complete -o default -F __start_kubectl k
+fi
+
+# ==============================================================================
+# Bash Completions
+# ==============================================================================
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -100,22 +147,64 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# ==============================================================================
+# Tmux — Auto-attach
+# ==============================================================================
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-      tmux attach-session -t main || tmux new-session -s main
+    tmux attach-session -t main || tmux new-session -s main
 fi
 
+# ==============================================================================
+# NVM
+# ==============================================================================
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-export PATH="$PATH:/home/mike/.lmstudio/bin"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
+# ==============================================================================
+# Environment Variables
+# ==============================================================================
+export EDITOR=vim
+export VISUAL=vim
+export OLLAMA_HOST=http://ollama.taildb5a91.ts.net:11434
+export RECORDINGS_DIR="$HOME/Files/MeetingNotes"
 
+# ==============================================================================
+# Local .env
+# ==============================================================================
 if [ -f ~/.env ]; then
     export $(cat ~/.env | xargs)
 fi
 
+# ==============================================================================
+# Linuxbrew
+# ==============================================================================
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+fi
+
+# ==============================================================================
+# DevPod — Custom Starship Config
+# ==============================================================================
+if [ "$DEVPOD" = "true" ]; then
+    export STARSHIP_CONFIG=~/.config/starship-devpod.toml
+fi
+
+# ==============================================================================
+# Direnv
+# ==============================================================================
+if command -v direnv &> /dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
+# ==============================================================================
+# Starship Prompt
+# ==============================================================================
+eval "$(starship init bash)"
+
+# ==============================================================================
+# Functions
+# ==============================================================================
 ytnotes() {
     info=$(yt-dlp --print "%(channel)s|||%(title)s" "$1" 2>/dev/null)
     channel=$(echo "$info" | cut -d'|' -f1 | sed 's/[^a-zA-Z0-9 ]//g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1' | tr -d ' ')
@@ -124,45 +213,20 @@ ytnotes() {
     fabric -y "$1" -p extract_wisdom -s | tee ~/Files/"Obsidian Vault"/Fabric/"$(date +%Y%m%d)-${channel}-${title}.md"
 }
 
-
 hushnote() {
     sudo pkill ollama 2>/dev/null
     sleep 1
+    local hushnote_dir
+    hushnote_dir="$(dirname "$(chezmoi source-path ~/.bashrc 2>/dev/null || echo "$HOME/dotfiles")")"
     if [ "$1" = "speaker" ]; then
-        /home/mike/dotfiles/hushnote-speaker "$2"
+        "$hushnote_dir/hushnote-speaker" "$2"
     else
-        /home/mike/hushnote/hushnote "$@"
+        "$HOME/hushnote/hushnote" "$@"
     fi
     sleep 10
-    ~/dotfiles/hushnote-to-obsidian
+    "$hushnote_dir/hushnote-to-obsidian"
 }
-
-export RECORDINGS_DIR="/home/mike/Files/MeetingNotes"
-
-set -o vi
-
-eval "$(starship init bash)"
-
-if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
-fi
-
-if [ "$DEVPOD" = "true" ]; then
-      export STARSHIP_CONFIG=~/.config/starship-devpod.toml
-fi
-
-if command -v direnv &> /dev/null; then
-      eval "$(direnv hook bash)"
-fi
-
-export OLLAMA_HOST=http://ollama.taildb5a91.ts.net:11434
-alias ai='ollama run nous-hermes2'
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/home/mike/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-export EDITOR=vim
-export VISUAL=vim
-
+# ==============================================================================
+# Mise
+# ==============================================================================
 eval "$(mise activate bash)"
