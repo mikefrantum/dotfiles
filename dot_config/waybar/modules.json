@@ -3,7 +3,7 @@
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
-    "format": "{icon}",
+    "format": "{name} {icon}",
     // "format": "< %g >",
     // "format_focused" : "< %g ● >",
     "format-icons": {
