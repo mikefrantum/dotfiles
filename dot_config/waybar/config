@@ -3,6 +3,7 @@
   "position": "top", // Waybar position (top|bottom|left|right)
   "height": 30,
   "margin": "0 0 0 0",
+  "output": "DP-2",
   //"width": 1350, // Waybar width
   // Choose the order of the modules idle_inhibitor
   "modules-left": [

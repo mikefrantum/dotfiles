@@ -42,7 +42,6 @@ output * bg ~/Wallpaper/2dMountains.jpg fill
 # ==================== Monitor / Output Configuration ====================
 ### Output configuration
 #
-# Default wallpaper
 output * bg ~/Wallpaper/2dMountains.jpg fill
 
 # ==================== Monitor / Output Configuration ====================
@@ -54,13 +53,12 @@ output DP-3 pos 4480 0
 output HDMI-A-1 pos 2240 1440
 
 # ==================== Workspace → Monitor Assignment ====================
-# Locked workspaces to specific monitors
 workspace 1 output DP-2     # Dell Center     → Workspace 1
 workspace 2 output DP-1     # Left HP         → Workspace 2
 workspace 3 output DP-3     # Right HP        → Workspace 3
 workspace 4 output HDMI-A-1 # Bottom HDMI     → Workspace 4
 
-# Free workspaces (5 and above can open on any monitor)
+# Free workspaces
 workspace 5 output none
 workspace 6 output none
 workspace 7 output none
@@ -68,15 +66,12 @@ workspace 8 output none
 workspace 9 output none
 workspace 10 output none
 
-# ==================== Waybar (Status Bar) ====================
+# ==================== Waybar ====================
+# Start only one Waybar on the Dell monitor
+exec waybar
 
-# Start Waybar only on the center monitor (Dell DP-2)
-bar {
-    swaybar_command waybar
-    output DP-2          # Only show on center monitor
-    position top
-    height 32
-}
+# ==================== Terminal ====================
+set $term alacritty
 # All higher workspaces are free to appear on any monitor
 ### Idle configuration
 #
