@@ -1,22 +1,27 @@
 #!/bin/bash
+  set -euo pipefail
 
-set -euo pipefail
+  # Install packages based on distro
+  if command -v apt >/dev/null; then
+      sudo apt update && sudo apt install -y vim alacritty lsd
+  elif command -v rpm-ostree >/dev/null; then
+      rpm-ostree install vim
+      flatpak install --user -y flathub org.alacritty.Alacritty
+  fi
 
-sudo apt update && sudo apt install vim alacritty lsd -y
+  if ! command -v chezmoi >/dev/null; then
+      sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/mikefrantum/dotfiles.git
+  fi
 
-if ! command -v chezmoi >/dev/null; then
-    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/mikefrantum/dotfiles.git
-fi
-
-# Install nerd fonts
-mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts
-if [ ! -f "FiraCodeNerdFont-Regular.ttf" ]; then
-    wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/FiraCode.zip
-    unzip -q FiraCode.zip
-    if command -v fc-cache >/dev/null; then
+  # Install nerd fonts
+  mkdir -p ~/.local/share/fonts
+  cd ~/.local/share/fonts
+  if [ ! -f "FiraCodeNerdFont-Regular.ttf" ]; then
+      wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/FiraCode.zip
+      unzip -q FiraCode.zip
+      if command -v fc-cache >/dev/null; then
           fc-cache -fv
-    fi
-fi
+      fi
+  fi
 
-exit 0
+  exit 0
