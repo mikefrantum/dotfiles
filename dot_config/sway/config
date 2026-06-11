@@ -183,8 +183,9 @@ bindsym $mod+Shift+bracketleft move workspace to output left
     # We just use 1-10 as the default.
 
 # Screenshots - opens in swappy for annotation
-bindsym $mod+Shift+o exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | swappy -f -
-bindsym $mod+o exec grim -g "$(slurp)" - | swappy -f -
+bindsym $mod+Shift+o exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | swappy -f - && notify-send "Screenshot" "Window captured"
+
+bindsym $mod+o exec grim -g "$(slurp)" - | swappy -f - && notify-send "Screenshot" "Region captured"
 # Screen recording
 bindsym $mod+m exec wf-recorder -f ~/Nextcloud/ScreenRecordings/recording-$(date +%Y%m%d-%H%M%S).mp4
 bindsym $mod+Shift+m exec pkill wf-recorder
