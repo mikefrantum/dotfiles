@@ -1,0 +1,30 @@
+// Powermenu theme — same palette, vertical centered list
+@import "macchiato.rasi"
+
+window {
+    width:              280px;
+    background-color:   rgba(30, 32, 48, 0.92);
+}
+
+mainbox {
+    children:   [ inputbar, listview ];
+}
+
+inputbar {
+    children:   [ prompt ];
+    padding:    12px 14px;
+}
+
+prompt {
+    text-color:     @accent;
+    font:           "FiraMono Nerd Font Bold 14";
+}
+
+listview {
+    lines:      5;
+    spacing:    4px;
+}
+
+element {
+    padding:    10px 14px;
+}

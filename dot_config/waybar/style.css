@@ -340,3 +340,8 @@ window#waybar.empty #window {
     border-radius: 0 10px 10px 0;
     margin-right: 10px;
 }
+#scratchpad {
+    color: @mauve;
+    border-radius: 10px;
+    margin-right: 5px;
+}

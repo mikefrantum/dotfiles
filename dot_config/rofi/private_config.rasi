@@ -1,0 +1,13 @@
+configuration {
+    modi:                        "drun,run,window";
+    show-icons:                  true;
+    icon-theme:                  "Papirus-Dark";
+    drun-display-format:         "{name}";
+    window-format:               "{w} · {c} · {t}";
+    font:                        "FiraMono Nerd Font 13";
+    hover-select:                true;
+    me-select-entry:             "";
+    me-accept-entry:             "MousePrimary";
+}
+
+@theme "~/.config/rofi/themes/macchiato.rasi"

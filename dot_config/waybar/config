@@ -10,12 +10,13 @@
     "custom/launcher",
     "sway/workspaces",
     //"custom/swap",
-    "sway/window",
+    //"sway/window",
     "sway/mode",
-    "mpd#2",
-    "mpd#3",
-    "mpd#4",
-    "mpd"
+    "sway/scratchpad"
+    //"mpd#2",
+    //"mpd#3",
+    //"mpd#4",
+    //"mpd"
   ],
   "modules-center": ["clock"],
   "modules-right": [
