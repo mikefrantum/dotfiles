@@ -106,7 +106,8 @@ set $term alacritty
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    #bindsym $mod+Shift+q kill
+    bindsym $mod+Shift+q exec swaymsg [focused] kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -182,7 +183,7 @@ bindsym $mod+Shift+bracketleft move workspace to output left
     # We just use 1-10 as the default.
 
 # Screenshots - opens in swappy for annotation
-bindsym $mod+Shift+o exec grim - | swappy -f -
+bindsym $mod+Shift+o exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | swappy -f -
 bindsym $mod+o exec grim -g "$(slurp)" - | swappy -f -
 # Screen recording
 bindsym $mod+m exec wf-recorder -f ~/Nextcloud/ScreenRecordings/recording-$(date +%Y%m%d-%H%M%S).mp4
@@ -277,6 +278,7 @@ include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "
 exec flatpak run com.nextcloud.desktopclient.nextcloud --background
 exec flatpak run ch.protonmail.protonmail-bridge --no-window
 exec flatpak run dev.deedles.Trayscale --hide-window
+exec python3 ~/.config/sway/scripts/thumbwheel-volume.py
 
 default_floating_border pixel 1   
 smart_borders on
