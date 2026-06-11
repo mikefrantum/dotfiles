@@ -9,8 +9,7 @@
   "modules-left": [
     "custom/launcher",
     "sway/workspaces",
-    "custom/swap",
-    "tray",
+    //"custom/swap",
     "sway/window",
     "sway/mode",
     "mpd#2",
@@ -20,15 +19,17 @@
   ],
   "modules-center": ["clock"],
   "modules-right": [
+    "custom/tailscale",
+    "tray",
     "backlight",
     "pulseaudio",
-    "temperature",
+    //"temperature",
     // "cpu",
     // "memory",
     // "disk",
     "group/hardware",
-    "battery",
-    "network",
+   // "battery",
+   // "network",
     "idle_inhibitor",
     "custom/power"
   ],
@@ -36,16 +37,5 @@
 
     // Load Modules
     "include": ["~/.config/waybar/modules.json"],
-
-  // Modules configuration
-
-    "custom/cava-internal": {
-    "exec": "~/.config/waybar/scripts/Cava.sh",
-    "return-type": "text",
-    "format": "{}",
-    "tooltip": false,
-    "restart-interval": 1,
-    "exec-if": "which cava"
-  }
-
 }
+  // Modules configuration

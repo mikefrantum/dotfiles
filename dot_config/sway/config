@@ -66,6 +66,8 @@ workspace 8 output none
 workspace 9 output none
 workspace 10 output none
 
+# ==================== Autostart Applications ====================
+
 
 # ==================== Terminal ====================
 set $term alacritty
@@ -78,8 +80,6 @@ set $term alacritty
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f -c 000000'
-exec --no-startup-id flatpak run com.nextcloud.desktopclient.nextcloud --background
-#
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -274,7 +274,9 @@ bindsym $mod+t exec thunar
 #
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
-exec flatpak run com.nextcloud.desktopclient.nextcloud --background --platform wayland
+exec flatpak run com.nextcloud.desktopclient.nextcloud --background
+exec flatpak run ch.protonmail.protonmail-bridge --no-window
+exec flatpak run dev.deedles.Trayscale --hide-window
 
 default_floating_border pixel 1   
 smart_borders on
