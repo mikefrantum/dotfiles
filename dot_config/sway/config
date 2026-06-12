@@ -3,7 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-
+exec systemctl --user import-environment PATH
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -252,7 +252,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-bindsym $mod+t exec thunar
+bindsym $mod+t exec doublecmd
+
+# Phone & Tablet keybinds
+bindsym $mod+p exec /home/mike/.local/bin/scrcpy -s 2B011FDH3004TJ --turn-screen-off
+bindsym $mod+Shift+p exec /home/mike/.local/bin/scrcpy -s R52W90F8L8T --turn-screen-off
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
