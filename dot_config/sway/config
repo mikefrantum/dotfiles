@@ -292,3 +292,7 @@ default_border pixel 1
 
 for_window [app_id="google-chrome"] border none, gaps inner 0, gaps outer 0
 for_window [app_id="org.chromium.Chromium"] border none, gaps inner 0, gaps outer 0
+
+# Phone & Tablet setup to goto scratchpad when launched
+for_window [title="Pixel 7 Pro"] move scratchpad
+for_window [title="SM-X710"] move scratchpad

@@ -125,6 +125,13 @@ alias gp='git push'
 alias ai='ollama run nous-hermes2'
 
 # ==============================================================================
+# Aliases — Phone & Tablet
+# ==============================================================================
+export PATH="$HOME/.local/bin:$PATH"
+alias phone='scrcpy -s 2B011FDH3004TJ --turn-screen-off > /dev/null 2>&1 &'
+alias tablet='scrcpy -s R52W90F8L8T --turn-screen-off > /dev/null 2>&1 &'
+
+# ==============================================================================
 # Kubectl Completion
 # ==============================================================================
 if command -v kubectl &> /dev/null; then
