@@ -76,13 +76,12 @@ set $term alacritty
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f -c 000000' \
+    after-resume 'swaymsg "output * power on"'
 
 ### Input configuration
 #
@@ -187,8 +186,10 @@ bindsym $mod+Shift+o exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.f
 
 bindsym $mod+o exec grim -g "$(slurp)" - | swappy -f - && notify-send "Screenshot" "Region captured"
 # Screen recording
-bindsym $mod+m exec wf-recorder -f ~/Nextcloud/ScreenRecordings/recording-$(date +%Y%m%d-%H%M%S).mp4
-bindsym $mod+Shift+m exec pkill wf-recorder
+bindsym $mod+m exec wf-recorder -o DP-3 -a alsa_input.usb-0b0e_Jabra_SPEAK_410_USB_1C48F9A03EE5x010900-00.mono-fallback -f ~/Nextcloud/ScreenRecordings/recording-$(date +%Y%m%d-%H%M%S).mp4 & notify-send -u critical -t 0 "⏺ Recording" "Recording started — Super+Shift+M to stop"
+
+bindsym $mod+Shift+m exec pkill wf-recorder && notify-send -u normal "⏹ Recording" "Saved to Nextcloud"
+
 #
 # Layout stuff:
 #
@@ -281,6 +282,7 @@ exec flatpak run ch.protonmail.protonmail-bridge --no-window
 exec flatpak run dev.deedles.Trayscale --hide-window
 exec python3 ~/.config/sway/scripts/thumbwheel-volume.py
 exec systemctl --user import-environment
+exec flatpak run com.core447.StreamController
 
 default_floating_border pixel 1   
 smart_borders on

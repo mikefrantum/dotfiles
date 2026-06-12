@@ -98,11 +98,12 @@ window#waybar {
 #mode,
 #window,
 #tray,
-#custom-tailscale,custom-tailscale
+#custom-tailscale,
 #custom-power,
 #custom-pacman,
 #custom-launcher,
 #custom-system,
+#scratchpad,
 #mpd {
     padding: 5px 8px;
     border-style: solid;
@@ -310,10 +311,10 @@ window#waybar.empty #window {
     background-color: @mauve;
     color: @base;
     border-radius: 10px;
-    padding: 5px 10px;
-    margin-left: 15px;
+    padding: 5px 12px;
+    margin: 8px 0px 8px 15px;
+    font-size: 16px;
 }
-
 #custom-power {
     color: @base;
     background-color: @red;
@@ -341,7 +342,10 @@ window#waybar.empty #window {
     margin-right: 10px;
 }
 #scratchpad {
-    color: @mauve;
+    background-color: @mauve;
+    color: @base;
     border-radius: 10px;
-    margin-right: 5px;
+    margin-left: 15px;
+    padding: 5px 10px;
+    font-weight: bold;
 }
