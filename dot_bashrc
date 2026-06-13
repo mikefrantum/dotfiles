@@ -19,9 +19,7 @@ shopt -s histappend
 # ==============================================================================
 shopt -s checkwinsize
 set -o vi
-
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
@@ -32,7 +30,6 @@ fi
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
-
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
         color_prompt=yes
@@ -40,14 +37,12 @@ if [ -n "$force_color_prompt" ]; then
         color_prompt=
     fi
 fi
-
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
-
 case "$TERM" in
     xterm*|rxvt*)
         PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
@@ -64,7 +59,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # ==============================================================================
@@ -127,7 +121,6 @@ alias ai='ollama run nous-hermes2'
 # ==============================================================================
 # Aliases — Phone & Tablet
 # ==============================================================================
-export PATH="$HOME/.local/bin:$PATH"
 alias phone='scrcpy -s 2B011FDH3004TJ --turn-screen-off > /dev/null 2>&1 &'
 alias tablet='scrcpy -s R52W90F8L8T --turn-screen-off > /dev/null 2>&1 &'
 
@@ -138,6 +131,17 @@ if command -v kubectl &> /dev/null; then
     source <(kubectl completion bash)
     complete -o default -F __start_kubectl k
 fi
+
+# ==============================================================================
+# Sway Function
+# ==============================================================================
+sway() {
+    export LIBVA_DRIVER_NAME=nvidia
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export WLR_NO_HARDWARE_CURSORS=1
+    export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+    exec dbus-run-session /usr/bin/sway --unsupported-gpu "$@"
+}
 
 # ==============================================================================
 # Bash Completions
@@ -155,18 +159,11 @@ if ! shopt -oq posix; then
 fi
 
 # ==============================================================================
-# Tmux — Auto-attach
+# Tmux — Auto-attach (skip on raw TTY so \`sway\` launch isn't blocked)
 # ==============================================================================
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ "$TERM" != "linux" ]; then
     tmux attach-session -t main || tmux new-session -s main
 fi
-
-# ==============================================================================
-# NVM
-# ==============================================================================
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # ==============================================================================
 # Environment Variables
@@ -204,7 +201,6 @@ if command -v direnv &> /dev/null; then
     eval "$(direnv hook bash)"
 fi
 
-
 # ==============================================================================
 # Functions
 # ==============================================================================
@@ -229,6 +225,7 @@ hushnote() {
     sleep 10
     "$hushnote_dir/hushnote-to-obsidian"
 }
+
 # ==============================================================================
 # Mise
 # ==============================================================================

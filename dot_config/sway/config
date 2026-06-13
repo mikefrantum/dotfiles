@@ -287,8 +287,7 @@ exec flatpak run com.nextcloud.desktopclient.nextcloud --background
 exec flatpak run ch.protonmail.protonmail-bridge --no-window
 exec flatpak run dev.deedles.Trayscale --hide-window
 exec python3 ~/.config/sway/scripts/thumbwheel-volume.py
-exec systemctl --user import-environment
-exec flatpak run com.core447.StreamController
+# exec flatpak run com.core447.StreamController
 
 default_floating_border pixel 1   
 smart_borders on
