@@ -297,6 +297,14 @@ workspace 5 output DP-3
 workspace 6 output HDMI-A-1
 workspace 7 output HDMI-A-1
 
+# Workspace 10 — creative apps, tabbed, on main screen
+workspace 10 output DP-2
+workspace 10 layout tabbed
+assign [app_id="org.gimp.GIMP"] workspace 10
+assign [app_id="org.inkscape.Inkscape"] workspace 10
+assign [app_id="org.kde.kdenlive"] workspace 10
+assign [app_id="darktable"] workspace 10
+
 # Send phone, tablet, and Jami to workspace 4
 for_window [title="Pixel 7 Pro"] move to workspace 4
 for_window [title="SM-X710"] move to workspace 4
