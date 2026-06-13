@@ -2,10 +2,19 @@
 import evdev
 import subprocess
 
-DEVICE = "/dev/input/event6"
+DEVICE_NAME = "Logitech MX Master 3"
 REL_HWHEEL = 6
 
-device = evdev.InputDevice(DEVICE)
+def find_device(name):
+    for path in evdev.list_devices():
+        dev = evdev.InputDevice(path)
+        if dev.name == name and evdev.ecodes.EV_REL in dev.capabilities():
+            return dev
+    return None
+
+device = find_device(DEVICE_NAME)
+if device is None:
+    raise SystemExit(f"Device '{DEVICE_NAME}' not found")
 
 for event in device.read_loop():
     if event.type == evdev.ecodes.EV_REL and event.code == REL_HWHEEL:

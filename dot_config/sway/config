@@ -17,7 +17,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # Recommends: foot
-set $term foot
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -72,7 +72,6 @@ workspace 10 output none
 
 
 # ==================== Terminal ====================
-set $term foot 
 # All higher workspaces are free to appear on any monitor
 ### Idle configuration
 #
@@ -289,6 +288,47 @@ exec flatpak run dev.deedles.Trayscale --hide-window
 exec python3 ~/.config/sway/scripts/thumbwheel-volume.py
 # exec flatpak run com.core447.StreamController
 
+# Pin workspace 4 to the lower monitor
+workspace 1 output DP-2
+workspace 2 output DP-1
+workspace 3 output DP-3
+workspace 4 output HDMI-A-1
+workspace 5 output DP-3
+workspace 6 output HDMI-A-1
+workspace 7 output HDMI-A-1
+
+# Send phone, tablet, and Jami to workspace 4
+for_window [title="Pixel 7 Pro"] move to workspace 4
+for_window [title="SM-X710"] move to workspace 4
+assign [app_id="net.jami.Jami"] workspace 4
+
+# Workspace assignments — Wayland apps (match on app_id)
+assign [app_id="google-chrome"] workspace 1
+assign [app_id="org.chromium.Chromium"] workspace 2
+assign [app_id="org.mozilla.thunderbird_esr"] workspace 3
+assign [app_id="com.slack.Slack"] workspace 5
+
+# Workspace assignments — X11 apps (match on class via for_window)
+for_window [class="obsidian"] move to workspace 6
+for_window [class="Doublecmd"] move to workspace 7
+
+# Autostart — workspace 4 apps
+exec sleep 1 && scrcpy -s 2B011FDH3004TJ --turn-screen-off
+exec sleep 2 && scrcpy -s R52W90F8L8T --turn-screen-off
+exec sleep 3 && flatpak run net.jami.Jami
+
+# Autostart — main apps
+exec sleep 5 && flatpak run org.chromium.Chromium
+exec sleep 7 && flatpak run com.slack.Slack
+exec sleep 8 && flatpak run md.obsidian.Obsidian
+exec sleep 9 && doublecmd
+exec sleep 12 && flatpak run com.google.Chrome
+exec sleep 20 && flatpak run org.mozilla.thunderbird_esr
+
+# Scratchpad terminal
+exec sleep 30 && alacritty --class scratchpadterm
+for_window [app_id="scratchpadterm"] move scratchpad
+
 default_floating_border pixel 1   
 smart_borders on
 gaps inner 0
@@ -298,6 +338,3 @@ default_border pixel 1
 for_window [app_id="google-chrome"] border none, gaps inner 0, gaps outer 0
 for_window [app_id="org.chromium.Chromium"] border none, gaps inner 0, gaps outer 0
 
-# Phone & Tablet setup to goto scratchpad when launched
-for_window [title="Pixel 7 Pro"] move scratchpad
-for_window [title="SM-X710"] move scratchpad

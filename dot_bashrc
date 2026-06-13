@@ -159,11 +159,6 @@ if ! shopt -oq posix; then
 fi
 
 # ==============================================================================
-# Tmux — Auto-attach (skip on raw TTY so \`sway\` launch isn't blocked)
-# ==============================================================================
-if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ "$TERM" != "linux" ]; then
-    tmux attach-session -t main || tmux new-session -s main
-fi
 
 # ==============================================================================
 # Environment Variables
