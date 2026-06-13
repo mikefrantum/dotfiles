@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 exec systemctl --user import-environment PATH
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -70,7 +72,7 @@ workspace 10 output none
 
 
 # ==================== Terminal ====================
-set $term alacritty
+set $term foot 
 # All higher workspaces are free to appear on any monitor
 ### Idle configuration
 #
