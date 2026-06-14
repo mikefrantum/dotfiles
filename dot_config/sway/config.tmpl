@@ -46,25 +46,29 @@ output * bg ~/Wallpaper/2dMountains.jpg fill
 
 # ==================== Monitor / Output Configuration ====================
 # === Desktop Multi-Monitor Setup ===
+{{- if eq .chezmoi.hostname "fedora-desktop" }}
 output DP-2 mode 2560x1440@59.951Hz
 output DP-1 pos 0 0
 output DP-2 pos 1920 0
 output DP-3 pos 4480 0
 output HDMI-A-1 pos 2240 1440
+{{- else }}
+output eDP-1 pos 0 0
+{{- end }}
 
 # ==================== Workspace → Monitor Assignment ====================
-workspace 1 output DP-2     # Dell Center     → Workspace 1
-workspace 2 output DP-1     # Left HP         → Workspace 2
-workspace 3 output DP-3     # Right HP        → Workspace 3
-workspace 4 output HDMI-A-1 # Bottom HDMI     → Workspace 4
-
-# Free workspaces
+{{- if eq .chezmoi.hostname "fedora-desktop" }}
+workspace 1 output DP-2
+workspace 2 output DP-1
+workspace 3 output DP-3
+workspace 4 output HDMI-A-1
 workspace 5 output none
 workspace 6 output none
 workspace 7 output none
 workspace 8 output none
 workspace 9 output none
 workspace 10 output none
+{{- end }}
 
 # ==================== Autostart Applications ====================
 
@@ -186,7 +190,7 @@ bindsym $mod+Shift+o exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.f
 
 bindsym $mod+o exec grim -g "$(slurp)" - | swappy -f - && notify-send "Screenshot" "Region captured"
 # Screen recording
-bindsym $mod+m exec wf-recorder -o DP-3 -a alsa_input.usb-0b0e_Jabra_SPEAK_410_USB_1C48F9A03EE5x010900-00.mono-fallback -f ~/Nextcloud/ScreenRecordings/recording-$(date +%Y%m%d-%H%M%S).mp4 & notify-send -u critical -t 0 "⏺ Recording" "Recording started — Super+Shift+M to stop"
+bindsym $mod+m exec wf-recorder -o {{ if eq .chezmoi.hostname "fedora-desktop" }}DP-3{{ else }}eDP-1{{ end }} -a alsa_input.usb-0b0e_Jabra_SPEAK_410_USB_1C48F9A03EE5x010900-00.mono-fallback -f ~/Nextcloud/ScreenRecordings/recording-$(date +%Y%m%d-%H%M%S).mp4 & notify-send -u critical -t 0 "⏺ Recording" "Recording started — Super+Shift+M to stop"
 
 bindsym $mod+Shift+m exec pkill wf-recorder && notify-send -u normal "⏹ Recording" "Saved to Nextcloud"
 
