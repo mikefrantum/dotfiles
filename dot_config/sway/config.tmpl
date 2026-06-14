@@ -293,6 +293,7 @@ exec python3 ~/.config/sway/scripts/thumbwheel-volume.py
 # exec flatpak run com.core447.StreamController
 
 # Pin workspace 4 to the lower monitor
+{{- if eq .chezmoi.hostname "fedora-desktop" }}
 workspace 1 output DP-2
 workspace 2 output DP-1
 workspace 3 output DP-3
@@ -303,6 +304,7 @@ workspace 7 output HDMI-A-1
 
 # Workspace 10 — creative apps, tabbed, on main screen
 workspace 10 output DP-2
+{{- end }}
 workspace 10 layout tabbed
 assign [app_id="org.gimp.GIMP"] workspace 10
 assign [app_id="org.inkscape.Inkscape"] workspace 10

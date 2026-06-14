@@ -2,13 +2,13 @@
 import evdev
 import subprocess
 
-DEVICE_NAME = "Logitech MX Master 3"
+DEVICE_NAME = "MX Master"
 REL_HWHEEL = 6
 
 def find_device(name):
     for path in evdev.list_devices():
         dev = evdev.InputDevice(path)
-        if dev.name == name and evdev.ecodes.EV_REL in dev.capabilities():
+        if name in dev.name and evdev.ecodes.EV_REL in dev.capabilities():
             return dev
     return None
 
