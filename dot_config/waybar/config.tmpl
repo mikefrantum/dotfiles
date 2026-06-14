@@ -3,7 +3,9 @@
   "position": "top", // Waybar position (top|bottom|left|right)
   "height": 46,
   "margin": "0 0 0 0",
+  {{- if eq .chezmoi.hostname "fedora-desktop" }}
   "output": "DP-2",
+  {{- end }}
   //"width": 1350, // Waybar width
   // Choose the order of the modules idle_inhibitor
   "modules-left": [
@@ -23,6 +25,7 @@
     "custom/tailscale",
     "tray",
     "backlight",
+    "bluetooth",
     "pulseaudio",
     //"temperature",
     // "cpu",
