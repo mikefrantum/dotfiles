@@ -141,9 +141,9 @@ sway() {
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
     export WLR_NO_HARDWARE_CURSORS=1
     export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
-    exec dbus-run-session /usr/bin/sway --unsupported-gpu "$@"
+    exec /usr/bin/sway --unsupported-gpu "$@"
 {{- else }}
-    exec dbus-run-session /usr/bin/sway "$@"
+    exec /usr/bin/sway "$@"
 {{- end }}
 }
 
