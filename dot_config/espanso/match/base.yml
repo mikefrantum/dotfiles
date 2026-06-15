@@ -1,0 +1,60 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+
+ matches: 
+
+
+  # Print the current date
+  - trigger: "/date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  - trigger: "/m"
+    replace: "{{mymonth}}"
+    vars:
+      - name: mymonth
+        type: date
+        params:
+          format: "%B"     # Full month name → June
+          # format: "%b"   # Short month name → Jun
+          # format: "%m"   # Numeric month → 06
+
+  - trigger: "/d"
+    replace: "Web Development"
+
+
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # Shopify Logins 
+  - trigger: "loginvegan"
+    replace: "shopify theme list -s vegan-treats-bakery.myshopify.com"
+
+
+
+  # Greetings
+  - trigger: "/ty"
+    replace: "Thanks!\nMike"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
