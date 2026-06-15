@@ -11,7 +11,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
 
 
- matches: 
+ matches:
 
 
   # Print the current date
@@ -22,6 +22,22 @@
         type: date
         params:
           format: "%m/%d/%Y"
+
+  - trigger: "/t-d"
+    replace: "{{mytoday}}"
+    vars:
+      - name: mytoday
+        type: date
+        params:
+          format: "%Y-%m-%d - "
+
+  - trigger: "/td"
+    replace: "{{mytoday}}"
+    vars:
+      - name: mytoday
+        type: date
+        params:
+          format: "%Y_%m_%d - "
 
   - trigger: "/m"
     replace: "{{mymonth}}"
@@ -47,9 +63,18 @@
         params:
           cmd: "echo 'Hello from your shell'"
 
+  # Shopify Dev
+  - trigger: "/s"
+    replace: "shopify theme dev"
+  - trigger: "/p"
+    replace: "shopify theme pull"
+
+
   # Shopify Logins 
   - trigger: "loginvegan"
     replace: "shopify theme list -s vegan-treats-bakery.myshopify.com"
+  - trigger: "loginootw"
+    replace: "shopify theme list -s ootw2019.myshopify.com"
 
 
 
