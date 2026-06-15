@@ -331,6 +331,7 @@ exec sleep 2 && scrcpy -s R52W90F8L8T --turn-screen-off
 exec sleep 3 && flatpak run net.jami.Jami
 
 # Autostart — main apps
+exec flatpak run ch.protonmail.protonmail-bridge --no-window
 exec sleep 5 && flatpak run org.chromium.Chromium
 exec sleep 7 && flatpak run com.slack.Slack
 exec sleep 8 && flatpak run md.obsidian.Obsidian
