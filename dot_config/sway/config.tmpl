@@ -291,6 +291,7 @@ exec flatpak run ch.protonmail.protonmail-bridge --no-window
 exec flatpak run dev.deedles.Trayscale --hide-window
 exec python3 ~/.config/sway/scripts/thumbwheel-volume.py
 # exec flatpak run com.core447.StreamController
+exec systemctl --user start waybar.service
 
 # Pin workspace 4 to the lower monitor
 {{- if eq .chezmoi.hostname "fedora-desktop" }}
