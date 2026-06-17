@@ -1,27 +1,36 @@
 #!/bin/bash
-  set -euo pipefail
+set -uo pipefail
 
-  # Install packages based on distro
-  if command -v apt >/dev/null; then
-      sudo apt update && sudo apt install -y vim alacritty lsd
-  elif command -v rpm-ostree >/dev/null; then
-      rpm-ostree install vim
-      flatpak install --user -y flathub org.alacritty.Alacritty
-  fi
+# Install packages based on distro
+if command -v apt >/dev/null; then
+    sudo apt update && sudo apt install -y vim lsd
+elif command -v rpm-ostree >/dev/null; then
+    rpm-ostree install vim
+    flatpak install --user -y flathub org.alacritty.Alacritty
+fi
 
-  if ! command -v chezmoi >/dev/null; then
-      sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/mikefrantum/dotfiles.git
-  fi
+if ! command -v chezmoi >/dev/null; then
+    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/mikefrantum/dotfiles.git
+fi
 
-  # Install nerd fonts
-  mkdir -p ~/.local/share/fonts
-  cd ~/.local/share/fonts
-  if [ ! -f "FiraCodeNerdFont-Regular.ttf" ]; then
-      wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/FiraCode.zip
-      unzip -q FiraCode.zip
-      if command -v fc-cache >/dev/null; then
-          fc-cache -fv
-      fi
-  fi
+# Install starship prompt
+if ! command -v starship >/dev/null; then
+    curl -fsSL https://starship.rs/install.sh | sh -s -- -y
+fi
 
-  exit 0
+# Install nerd fonts
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts
+if [ ! -d "FiraMono" ]; then
+    wget -q https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraMono.zip
+    unzip -qo FiraMono.zip -d FiraMono
+fi
+if [ ! -d "JetBrainsMono" ]; then
+    wget -q https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+    unzip -qo JetBrainsMono.zip -d JetBrainsMono
+fi
+if command -v fc-cache >/dev/null; then
+    fc-cache -fv
+fi
+
+exit 0
