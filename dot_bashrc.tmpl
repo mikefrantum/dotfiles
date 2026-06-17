@@ -125,6 +125,12 @@ alias phone='scrcpy -s 2B011FDH3004TJ --turn-screen-off > /dev/null 2>&1 &'
 alias tablet='scrcpy -s R52W90F8L8T --turn-screen-off > /dev/null 2>&1 &'
 
 # ==============================================================================
+# Aliases - Podman for Winboat
+# ==============================================================================
+alias winboat-up='cd ~/.winboat && podman-compose up -d'
+alias winboat-down='cd ~/.winboat && podman-compose down'
+
+# ==============================================================================
 # Kubectl Completion
 # ==============================================================================
 if command -v kubectl &> /dev/null; then
