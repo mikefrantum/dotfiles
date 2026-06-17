@@ -77,6 +77,8 @@
     replace: "shopify theme list -s ootw2019.myshopify.com"
   - trigger: "loginapollo"
     replace: "shopify theme list -s apollo-neuro.myshopify.com"
+  - trigger: "loginjuice"
+    replace: "shopify theme list -s juiceshopsf.myshopify.com"
 
 
 
