@@ -45,7 +45,7 @@
       - name: mymonth
         type: date
         params:
-          format: "%B"     # Full month name → June
+          format: "%B Web Development"     # Full month name → June
           # format: "%b"   # Short month name → Jun
           # format: "%m"   # Numeric month → 06
 
@@ -79,6 +79,8 @@
     replace: "shopify theme list -s apollo-neuro.myshopify.com"
   - trigger: "loginjuice"
     replace: "shopify theme list -s juiceshopsf.myshopify.com"
+  - trigger: "logindrift"
+    replace: "shopify theme list -s driftoriginals.myshopify.com"
 
 
 
