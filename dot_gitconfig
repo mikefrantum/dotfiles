@@ -1,3 +1,5 @@
 [user]
 	email = mike@mikefrantum.dev
 	name = Mike Frantum
+[safe]
+	directory = /var/home/mike/repos/claude
