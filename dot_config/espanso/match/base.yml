@@ -15,7 +15,7 @@
 
 
   # Print the current date
-  - trigger: "/date"
+  - trigger: ";;date"
     replace: "{{mydate}}"
     vars:
       - name: mydate
@@ -23,7 +23,7 @@
         params:
           format: "%m/%d/%Y"
 
-  - trigger: "/t-d"
+  - trigger: ";;t-d"
     replace: "{{mytoday}}"
     vars:
       - name: mytoday
@@ -31,7 +31,7 @@
         params:
           format: "%Y-%m-%d - "
 
-  - trigger: "/td"
+  - trigger: ";;td"
     replace: "{{mytoday}}"
     vars:
       - name: mytoday
@@ -39,7 +39,7 @@
         params:
           format: "%Y_%m_%d - "
 
-  - trigger: "/m"
+  - trigger: ";;m"
     replace: "{{mymonth}}"
     vars:
       - name: mymonth
@@ -49,7 +49,7 @@
           # format: "%b"   # Short month name → Jun
           # format: "%m"   # Numeric month → 06
 
-  - trigger: "/d"
+  - trigger: ";;d"
     replace: "Web Development"
 
 
@@ -64,10 +64,13 @@
           cmd: "echo 'Hello from your shell'"
 
   # Shopify Dev
-  - trigger: "/s"
+  - trigger: ";;s"
     replace: "shopify theme dev"
-  - trigger: "/p"
+  - trigger: ";;p"
     replace: "shopify theme pull"
+  - trigger: ";;ks"
+    replace: "lsof -ti:9292 | xargs kill -9"
+
 
 
   # Shopify Logins 
@@ -81,11 +84,15 @@
     replace: "shopify theme list -s juiceshopsf.myshopify.com"
   - trigger: "logindrift"
     replace: "shopify theme list -s driftoriginals.myshopify.com"
+  - trigger: "loginmv"
+    replace: "shopify theme list -s marie-veronique-2.myshopify.com"
+  - trigger: "loginez"
+    replace: "shopify theme list -s ez-exit-van-accessories.myshopify.com"
 
 
 
   # Greetings
-  - trigger: "/ty"
+  - trigger: ";;ty"
     replace: "Thanks!\nMike"
 
   # And much more! For more information, visit the docs: https://espanso.org/docs/
