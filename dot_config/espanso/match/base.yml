@@ -70,7 +70,8 @@
     replace: "shopify theme pull"
   - trigger: ";;ks"
     replace: "lsof -ti:9292 | xargs kill -9"
-
+  - trigger: ";;gitwork"
+    replace: "git remote set-url origin git@github-work:nohermosa/ezexit.git"
 
 
   # Shopify Logins 
