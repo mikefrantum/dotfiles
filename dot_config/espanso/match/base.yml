@@ -72,7 +72,8 @@
     replace: "lsof -ti:9292 | xargs kill -9"
   - trigger: ";;gitwork"
     replace: "git remote set-url origin git@github-work:nohermosa/ezexit.git"
-
+  - trigger: ";;git"
+    replace: "git remote set-url origin git@github.com:mikefrantum/homelab-cluster .git"
 
   # Shopify Logins 
   - trigger: "loginvegan"
@@ -89,6 +90,8 @@
     replace: "shopify theme list -s marie-veronique-2.myshopify.com"
   - trigger: "loginez"
     replace: "shopify theme list -s ez-exit-van-accessories.myshopify.com"
+  - trigger: "loginhalo"
+    replace: "shopify theme list -s nancyholman.myshopify.com"
 
 
 
