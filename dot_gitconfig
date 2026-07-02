@@ -3,3 +3,5 @@
 	name = Mike Frantum
 [safe]
 	directory = /var/home/mike/repos/claude
+[credential]
+	helper = store
