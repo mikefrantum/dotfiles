@@ -94,6 +94,9 @@
     replace: "shopify theme list -s nancyholman.myshopify.com"
   - trigger: "loginllw"
     replace: "shopify theme list -s leanna-lins-wonderland.myshopify.com"
+  - trigger: "loginhudski"
+    replace: "shopify theme list -s hudski.myshopify.com"
+
 
 
 
