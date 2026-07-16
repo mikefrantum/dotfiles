@@ -20,19 +20,22 @@
     //"mpd#4",
     //"mpd"
   ],
-  "modules-center": ["clock"],
+  "modules-center":[],
   "modules-right": [
+    "clock",
     "custom/tailscale",
     "tray",
     "backlight",
-    "bluetooth",
+    //"bluetooth",
     "pulseaudio",
     //"temperature",
-    // "cpu",
-    // "memory",
-    // "disk",
+     //"cpu",
+     //"memory",
+     //"disk",
     "group/hardware",
-   // "battery",
+   {{- if eq .chezmoi.hostname "fedora-laptop" }}
+    "battery",
+   {{- end }}
    // "network",
     "idle_inhibitor",
     "custom/power"
