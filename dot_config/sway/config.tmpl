@@ -257,7 +257,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-bindsym $mod+t exec doublecmd
+bindsym $mod+t exec alacritty -e spf 
 
 # Phone & Tablet keybinds
 bindsym $mod+p exec /home/mike/.local/bin/scrcpy -s 2B011FDH3004TJ --turn-screen-off
@@ -326,7 +326,7 @@ assign [app_id="com.slack.Slack"] workspace 5
 
 # Workspace assignments — X11 apps (match on class via for_window)
 for_window [class="obsidian"] move to workspace 6
-for_window [class="Doublecmd"] move to workspace 7
+for_window [app_id="Alacritty" title="spf"] move to workspace 7
 
 # Autostart — workspace 4 apps
 exec sleep 1 && scrcpy -s 2B011FDH3004TJ --turn-screen-off
@@ -338,7 +338,7 @@ exec flatpak run ch.protonmail.protonmail-bridge --no-window
 exec sleep 5 && flatpak run org.chromium.Chromium
 exec sleep 7 && flatpak run com.slack.Slack
 exec sleep 8 && flatpak run md.obsidian.Obsidian
-exec sleep 9 && doublecmd
+exec sleep 9 && alacritty -e spf
 exec sleep 12 && flatpak run com.google.Chrome
 exec sleep 20 && flatpak run org.mozilla.thunderbird_esr
 
