@@ -160,15 +160,11 @@ permission-fix-pod() {
 # Sway Function
 # ==============================================================================
 sway() {
-{{- if eq .chezmoi.hostname "fedora-desktop" }}
     export LIBVA_DRIVER_NAME=nvidia
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
     export WLR_NO_HARDWARE_CURSORS=1
     export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
     exec /usr/bin/sway --unsupported-gpu "$@"
-{{- else }}
-    exec /usr/bin/sway "$@"
-{{- end }}
 }
 
 
@@ -259,3 +255,4 @@ eval "$(mise activate bash)"
 # Starship Prompt
 # ==============================================================================
 eval "$(starship init bash)"
+export PATH="$HOME/.npm-global/bin:$PATH"
