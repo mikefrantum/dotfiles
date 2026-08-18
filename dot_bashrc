@@ -198,8 +198,8 @@ fi
 # ==============================================================================
 # Environment Variables
 # ==============================================================================
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export OLLAMA_HOST=http://ollama.taildb5a91.ts.net:11434
 export RECORDINGS_DIR="$HOME/Files/MeetingNotes"
 
