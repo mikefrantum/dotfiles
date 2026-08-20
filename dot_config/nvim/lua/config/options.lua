@@ -6,3 +6,5 @@ vim.opt.scrolloff = 8
 
 vim.opt.number = true
 vim.opt.relativenumber = false
+
+vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/site")
