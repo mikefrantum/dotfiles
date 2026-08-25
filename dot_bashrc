@@ -207,6 +207,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export OLLAMA_HOST=http://ollama.taildb5a91.ts.net:11434
 export RECORDINGS_DIR="$HOME/Files/MeetingNotes"
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 
 # ==============================================================================
 # Local .env
