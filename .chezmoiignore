@@ -1,3 +1,4 @@
 setup
 .ssh/config
 private_dot_kube/config
+.config/nvim/lazy-lock.json
