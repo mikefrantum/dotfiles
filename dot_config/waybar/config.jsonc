@@ -17,7 +17,9 @@
     "mpd#4",
     "mpd"
   ],
-  "modules-center": ["clock"],
+  "modules-center": [
+    "clock"
+  ],
   "modules-right": [
     "backlight",
     "pulseaudio",
@@ -31,11 +33,9 @@
     "idle_inhibitor",
     "custom/power"
   ],
-
-
-    // Load Modules
-    "include": ["~/.config/waybar/modules.json"],
-
+  // Load Modules
+  "include": [
+    "~/.config/waybar/modules.json"
+  ]
   // Modules configuration
-
 }
