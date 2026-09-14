@@ -328,8 +328,9 @@ assign [app_id="org.mozilla.thunderbird_esr"] workspace 3
 assign [app_id="com.slack.Slack"] workspace 5
 
 # Workspace assignments — X11 apps (match on class via for_window)
-for_window [class="obsidian"] move to workspace 6
+for_window [app_id="md.obsidian.Obsidian"] move to workspace 6
 for_window [app_id="Alacritty" title="spf"] move to workspace 7
+
 
 # Autostart — workspace 4 apps
 exec sleep 1 && scrcpy -s 2B011FDH3004TJ --turn-screen-off
@@ -346,7 +347,6 @@ exec sleep 12 && flatpak run com.google.Chrome
 exec sleep 20 && flatpak run org.mozilla.thunderbird_esr
 
 # Scratchpad terminal
-exec sleep 30 && alacritty --class scratchpadterm
 for_window [app_id="scratchpadterm"] move scratchpad
 
 default_floating_border pixel 1   
