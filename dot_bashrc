@@ -175,11 +175,11 @@ permission-fix-pod() {
 # Sway Function
 # ==============================================================================
 sway() {
-    env LIBVA_DRIVER_NAME=nvidia \
-        __GLX_VENDOR_LIBRARY_NAME=nvidia \
-        WLR_NO_HARDWARE_CURSORS=1 \
-        __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json \
-        /usr/bin/sway --unsupported-gpu "$@"
+    export LIBVA_DRIVER_NAME=nvidia
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export WLR_NO_HARDWARE_CURSORS=1
+    export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+    exec /usr/bin/sway --unsupported-gpu "$@"
 }
 
 # ==============================================================================
