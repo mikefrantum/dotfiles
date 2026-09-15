@@ -107,8 +107,7 @@ exec swayidle -w \
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
-
+    bindsym $mod+Return exec env -u __EGL_VENDOR_LIBRARY_FILENAMES -u __GLX_VENDOR_LIBRARY_NAME $term
     # Kill focused window
     #bindsym $mod+Shift+q kill
     bindsym $mod+Shift+q kill
