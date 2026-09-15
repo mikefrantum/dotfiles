@@ -1,7 +1,7 @@
 [window]
 padding = { x = 12, y = 10 }
 dynamic_padding = true
-opacity = 0.95
+opacity = 0.98
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
@@ -15,4 +15,7 @@ offset = { x = 0, y = 1 }
 glyph_offset = { x = 0, y = 1 }
 
 [terminal]
-shell = { program = "/bin/bash", args = ["-c", "tmux attach -t main || tmux new -s main"] }
+shell = { program = "/bin/bash", args = [
+  "-c",
+  "tmux attach -t main || tmux new -s main",
+] }
