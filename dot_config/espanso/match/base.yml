@@ -104,7 +104,7 @@ matches:
   # Android
   - trigger: ";;adbk"
     replace: "adb kill-server"
-  - trigger: ";;adbu"
+  - trigger: ";;adbs"
     replace: "adb start-server"
 
   # And much more! For more information, visit the docs: https://espanso.org/docs/
