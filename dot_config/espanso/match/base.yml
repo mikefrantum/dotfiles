@@ -49,7 +49,7 @@ matches:
   - trigger: ";;d"
     replace: "Web Development"
 
-  - trigger: ";;email"
+  - trigger: ";;id"
     replace: |
       Email:
       {{clipboard}}
