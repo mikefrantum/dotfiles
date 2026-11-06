@@ -1,0 +1,52 @@
+/* ===== Accent colour: burnt orange ===== */
+:root {
+  --color-primary-default: #d4782a !important;
+  --color-primary-hover: #e0883a !important;
+  --color-primary-pressed: #b8662e !important;
+  --selected-item-color: #d4782a !important;
+  --selected-item-text-color: #000 !important;
+}
+
+/* New Message button and other primary buttons */
+.button-primary,
+#folderPaneWriteMessage {
+  background-color: #d4782a !important;
+  border-color: #b8662e !important;
+  color: #000 !important;
+}
+.button-primary:hover,
+#folderPaneWriteMessage:hover {
+  background-color: #e0883a !important;
+}
+
+/* Active icon in the left spaces toolbar */
+.spaces-toolbar-button.current {
+  background-color: #d4782a !important;
+  color: #000 !important;
+}
+
+/* ===== Unread messages ===== */
+
+/* Burnt-orange background with black text */
+#threadTree tbody tr[data-properties~="unread"]:not(.selected) td,
+#threadTree tbody tr[data-properties~="unread"]:not(.selected) .card-container {
+  background-color: #d4782a !important;
+  color: #000 !important;
+}
+
+/* Keep icons and secondary text black too */
+#threadTree tbody tr[data-properties~="unread"]:not(.selected) td *,
+#threadTree tbody tr[data-properties~="unread"]:not(.selected) .card-container * {
+  color: #000 !important;
+}
+
+/* Darker accent bar on the left */
+#threadTree tbody tr[data-properties~="unread"] td:first-child,
+#threadTree tbody tr[data-properties~="unread"] .card-container {
+  box-shadow: inset 4px 0 0 #8a4200 !important;
+}
+
+/* Bold unread messages */
+#threadTree tbody tr[data-properties~="unread"] {
+  font-weight: bold !important;
+}

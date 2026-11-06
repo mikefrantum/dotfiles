@@ -178,6 +178,7 @@ sway() {
     export LIBVA_DRIVER_NAME=nvidia
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
     export WLR_NO_HARDWARE_CURSORS=1
+    [ -f ~/.config/sway/vnc-mode ] && export WLR_RENDERER=vulkan
     export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
     exec /usr/bin/sway --unsupported-gpu "$@"
 }

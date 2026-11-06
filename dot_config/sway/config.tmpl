@@ -192,7 +192,7 @@ bindsym $mod+o exec grim -g "$(slurp)" - | swappy -f - && notify-send "Screensho
 # Screen recording
 bindsym $mod+m exec wf-recorder -o {{ if eq .chezmoi.hostname "fedora-desktop" }}DP-3{{ else }}eDP-1{{ end }} -a alsa_input.usb-0b0e_Jabra_SPEAK_410_USB_1C48F9A03EE5x010900-00.mono-fallback -f ~/Files/ScreenRecordings/recording-$(date +%Y%m%d-%H%M%S).mp4 & notify-send -u critical -t 0 "⏺ Recording" "Recording started — Super+Shift+M to stop"
 
-bindsym $mod+Shift+m exec pkill wf-recorder && notify-send -u normal "⏹ Recording" "Saved to Nextcloud"
+bindsym $mod+Shift+m exec pkill wf-recorder && notify-send -u normal "⏹ Recording" "Saved to FileBrowser"
 
 #
 # Layout stuff:
@@ -291,7 +291,6 @@ bindsym Control+Mod1+Tab workspace next_on_output
 #
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
-exec flatpak run com.nextcloud.desktopclient.nextcloud --background
 exec flatpak run dev.deedles.Trayscale --hide-window
 exec python3 ~/.config/sway/scripts/thumbwheel-volume.py
 # exec flatpak run com.core447.StreamController
