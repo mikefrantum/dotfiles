@@ -1,0 +1,12 @@
+onboarding = false
+
+[keys]
+next_workspace = "prefix+j"
+previous_workspace = "prefix+k"
+
+[keys]
+next_workspace = "alt+j"
+previous_workspace = "alt+k"
+
+next_tab = "alt+l"
+previous_tab = "alt+h"
