@@ -6,3 +6,7 @@ previous_workspace = "alt+k"
 
 next_tab = "alt+l"
 previous_tab = "alt+h"
+
+next_agent = "alt+n"
+previous_agent = "alt+p"
+focus_agent = "alt+1..9"
