@@ -10,3 +10,5 @@ previous_tab = "alt+h"
 next_agent = "alt+n"
 previous_agent = "alt+p"
 focus_agent = "alt+1..9"
+
+copy_mode = "prefix+u"
